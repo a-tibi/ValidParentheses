@@ -22,6 +22,9 @@ namespace ValidParentheses
 				}
 				else if (closedBrackets.Contains(brackets[i]))
 				{
+					if (myStack != null)
+						return true;
+
 					var closedB = brackets[i];
 					var openB = myStack.Pop();
 					int closedBIndex = Array.IndexOf(closedBrackets, closedB);
@@ -32,6 +35,9 @@ namespace ValidParentheses
 					}
 				}
 			}
+			if (myStack.Count != 0)
+				return true;
+
 			return false;
 
 		}
@@ -45,7 +51,9 @@ namespace ValidParentheses
 				"()",
 				"()[]{}",
 				"([{}])",
-				"([{])"
+				"([{])",
+				"((({[]}",
+				")([]){}"
 			};
 
 
