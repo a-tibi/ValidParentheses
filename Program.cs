@@ -22,14 +22,18 @@ namespace ValidParentheses
 				}
 				else if (closedBrackets.Contains(brackets[i]))
 				{
-					if (myStack != null)
-						return true;
-
-					var closedB = brackets[i];
-					var openB = myStack.Pop();
-					int closedBIndex = Array.IndexOf(closedBrackets, closedB);
-					int openBIndex = Array.IndexOf(openBrackets, openB);
-					if(closedBIndex != openBIndex)
+					if (myStack != null && myStack.Count != 0)
+					{
+						var closedB = brackets[i];
+						var openB = myStack.Pop();
+						int closedBIndex = Array.IndexOf(closedBrackets, closedB);
+						int openBIndex = Array.IndexOf(openBrackets, openB);
+						if (closedBIndex != openBIndex)
+						{
+							return true;
+						}
+					}
+					else
 					{
 						return true;
 					}
